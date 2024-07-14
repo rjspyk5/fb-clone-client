@@ -11,16 +11,17 @@ const Register = () => {
     email: "",
     password: "",
     name: "",
+    photo: "",
   });
   // const [setMessage] = useState("");
   const handleInput = (e) => {
     setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
   };
   const navigate = useNavigate();
-  const { user, signUp } = useContext(AuthContext);
+  const { user, signUp, logOut, updateUser } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   useEffect(() => {
-    user && navigate("/");
+    user && navigate("/login");
   }, [user]);
 
   const handleSubmit = (e) => {
@@ -30,17 +31,15 @@ const Register = () => {
       email: formvalue.email,
       password: formvalue.password,
       name: formvalue.name,
+      photo: formvalue.photo,
     };
-    // const res= await axios.post("http://localhost/Social-Media-main/api/user.php",formData);
-    //let jsonres= res.data.json();
-    // if(res.data.success)
-    // {
-    //  setMessage(res.data.success);
-
-    // }
+    console.log(formData);
     signUp(formData.email, formData.password)
+      .then(() => updateUser(formvalue?.name, formvalue?.photo))
       .then(() => axiosPublic.post("/user", formData))
-      .then(() => navigate("/"));
+      .then(() => logOut())
+      .then(() => alert("register sucessfull"))
+      .then(() => navigate("/login"));
   };
 
   return (
@@ -85,6 +84,14 @@ const Register = () => {
               placeholder="Password"
               name="password"
               value={formvalue.password}
+              onChange={handleInput}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Photo Url"
+              name="photo"
+              value={formvalue.photo}
               onChange={handleInput}
               required
             />

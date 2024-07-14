@@ -3,6 +3,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase.config";
@@ -34,18 +35,18 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // const login = () => {
-  //   //TO DO
-  //   setuser({
-  //     id: 1,
-  //     name: "John Doe",
-  //     profilePic:
-  //       "https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   });
-  // };
+  const updateUser = (name, photo) => {
+    setloading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
 
   return (
-    <AuthContext.Provider value={{ user, signUp, signIn, loading, logOut }}>
+    <AuthContext.Provider
+      value={{ user, signUp, signIn, loading, logOut, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
