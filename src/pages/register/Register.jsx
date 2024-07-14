@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
+
 import { AuthContext } from "../../context/authContext";
 import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
 
@@ -13,7 +13,7 @@ const Register = () => {
     name: "",
     photo: "",
   });
-  // const [setMessage] = useState("");
+
   const handleInput = (e) => {
     setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
   };
@@ -33,7 +33,7 @@ const Register = () => {
       name: formvalue.name,
       photo: formvalue.photo,
     };
-    console.log(formData);
+
     signUp(formData.email, formData.password)
       .then(() => updateUser(formvalue?.name, formvalue?.photo))
       .then(() => axiosPublic.post("/user", formData))

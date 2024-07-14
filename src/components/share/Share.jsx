@@ -33,12 +33,12 @@ const Share = () => {
       <div className="container">
         <form onSubmit={handleSubmit} action="">
           <div className="top">
-            <img src={user?.profilePic} alt="" />
+            <img src={user?.photoURL} alt="" />
             <input
               name="text"
               type="text"
               required
-              placeholder={`What's on your mind ${user?.name}?`}
+              placeholder={`What's on your mind ${user?.displayName}?`}
             />
           </div>
           <hr />

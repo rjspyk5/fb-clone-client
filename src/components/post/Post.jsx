@@ -64,7 +64,7 @@ const Post = ({ post, refetch }) => {
       .then(() => refetch());
   };
   return (
-    <div className="post">
+    <div style={{ borderRadius: "20px" }} className="post">
       <div className="container">
         <div className="user">
           <div className="userInfo">
@@ -101,10 +101,10 @@ const Post = ({ post, refetch }) => {
             <TextsmsOutlinedIcon />
             {comments.length} Comments
           </div>
-          <div className="item">
+          {/* <div className="item">
             <ShareOutlinedIcon />
             Share
-          </div>
+          </div> */}
         </div>
         {commentOpen && (
           <Comments comments={comments} handleComment={handleComment} />

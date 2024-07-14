@@ -10,7 +10,7 @@ const Comments = ({ comments, handleComment }) => {
     <div className="comments">
       <form onSubmit={handleComment} action="">
         <div className="write">
-          <img src={user?.photo} alt="" />
+          <img src={user?.photoURL} alt="" />
           <input
             required
             name="text"

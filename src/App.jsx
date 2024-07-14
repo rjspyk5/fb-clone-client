@@ -31,7 +31,14 @@ function App() {
         <Navbar />
         <div style={{ display: "flex" }}>
           <LeftBar />
-          <div style={{ flex: 6 }}>
+          <div
+            style={{
+              flex: 6,
+              paddingTop: "20px",
+
+              backgroundColor: "#F6F3F3",
+            }}
+          >
             <Outlet />
           </div>
           <RightBar />
@@ -87,7 +94,6 @@ function App() {
         { path: "/dashboard/userlist/userupdate", element: <Userlist /> },
       ],
     },
-    {},
   ]);
 
   return (

@@ -19,12 +19,12 @@ const LeftBar = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="leftBar">
+    <div style={{ backgroundColor: "#F0F2F5" }} className="leftBar">
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src={user?.profilePic} alt="" />
-            <span>{user?.name}</span>
+            <img src={user?.photoURL} alt="" />
+            <span>{user?.displayName}</span>
           </div>
           <div className="item">
             <img src={Friends} alt="" />

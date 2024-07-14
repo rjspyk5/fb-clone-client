@@ -8,11 +8,13 @@
 
     .container {
       padding: 20px;
+    
 
       .user {
         display: flex;
         align-items: center;
         justify-content: space-between;
+       
 
         .dot{
           position: relative;
@@ -25,6 +27,7 @@
           padding: 5px 10px;
           border: none;
           color: white;
+          border-radius: 10px;
         }
 
         .userInfo {

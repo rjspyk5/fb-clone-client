@@ -33,8 +33,8 @@ const Stories = () => {
     <div className="stories">
       <div className="story">
         <form action="">
-          <img src={user?.profilePic} alt="" />
-          <span>{user?.name}</span>
+          <img src={user?.photoURL} alt="" />
+          <span>{user?.displayName}</span>
           <label htmlFor="file">
             <input id="file" type="file" />
             <span className="button">+</span>
