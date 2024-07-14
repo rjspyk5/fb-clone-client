@@ -20,6 +20,7 @@ import { AuthContext } from "./context/authContext";
 
 import Userlist from "./pages/Users/Userlist";
 import DashboardLayout from "./Layout/DashboardLayout";
+import Userupdate from "./pages/Users/Userupdate";
 
 function App() {
   const { user, loading } = useContext(AuthContext);
@@ -92,7 +93,19 @@ function App() {
       element: <DashboardLayout />,
       children: [
         { path: "/dashboard/userlist", element: <Userlist /> },
-        { path: "/dashboard/userlist/userupdate", element: <Userlist /> },
+        { path: "/dashboard/userlist/userupdate", element: <Userupdate /> },
+        { path: "/dashboard/userlist", element: <Userlist /> },
+        // { path: "/dashboard/postlist", element: <Postlist /> },
+        // { path: "/dashboard/storylist", element: <Storylist /> },
+        // { path: "/dashboard/commentlist", element: <Commentlist /> },
+
+        // { path: "/dashboard/userlist/userupdate", element: <Userlist /> },
+        // { path: "/dashboard/postlist/postupdate", element: <Postlist /> },
+        // { path: "/dashboard/storylist/storyupdate", element: <Storylist /> },
+        // {
+        //   path: "/dashboard/commentlist/commentupdate",
+        //   element: <Commentupdate />,
+        // },
       ],
     },
   ]);

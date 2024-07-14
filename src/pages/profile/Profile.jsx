@@ -10,8 +10,22 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts";
 import Post from "../../components/post/Post";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
+import { useAuth } from "../../Hooks/useAuth";
 
 const Profile = () => {
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+  const { data, refetch } = useQuery({
+    queryKey: ["userposts"],
+    queryFn: async () => {
+      const result = await axiosPublic.get(`/posts/${user.email}`);
+      return result.data;
+    },
+  });
+
   return (
     <div className="profile">
       <div className="images">
@@ -64,11 +78,11 @@ const Profile = () => {
             <MoreVertIcon />
           </div>
         </div>
-        {/* <div className="posts">
-      {data?.map((post) => (
-        <Post post={post} refetch={refetch} key={post._id} />
-      ))}
-    </div> */}
+        <div className="posts">
+          {data?.map((post) => (
+            <Post post={post} refetch={refetch} key={post._id} />
+          ))}
+        </div>
       </div>
     </div>
   );

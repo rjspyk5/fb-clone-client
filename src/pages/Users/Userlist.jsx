@@ -1,56 +1,77 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {useNavigate} from 'react-router-dom'
-
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
 
 const Userlist = () => {
-    const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  const [user, setuser] = useState([]);
+  const handleDelete = (id) => {
+    axiosPublic.delete(`/user/${id}`).then((res) => alert("Delete sucessfull"));
+  };
+  useEffect(() => {
+    axiosPublic.get("/user").then((res) => setuser(res.data));
+  }, [handleDelete]);
+
   return (
     <>
-    
-    <div style={{padding:"40px 20px"}}>
+      <div style={{ padding: "40px 20px" }}>
         <table className="table">
-        <thead>
+          <thead>
             <tr>
-            <th scope="col">ID</th>
-            <th scope="col">UserName</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Name</th>
-            <th scope="col">CoverPic</th>
-            <th scope="col">ProfilePic</th>
-            <th scope="col">City</th>
-            <th scope="col">Website</th>
-            <th>Action</th>
-            <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+              <th scope="col">ID</th>
+              <th scope="col">Photo</th>
 
-            <td>
-            <button onClick={()=>navigate("userupdate")} className="btn btn-success" >Update</button>
-            </td>
-            <td>
-            <button className="btn btn-danger" >Delete</button>
-            </td>
-           
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+
+              <th>Action</th>
             </tr>
-        </tbody>
+          </thead>
+          <tbody>
+            {user.map((el, idx) => {
+              return (
+                <tr key={el._id}>
+                  <th scope="row">{idx + 1}</th>
+                  <td>
+                    <img
+                      style={{ height: "60px", width: "50px" }}
+                      src={`${el?.photo}`}
+                      alt=""
+                    />
+                  </td>
+                  <td>{el.name || "unknwon"}</td>
+
+                  <td>{el.email}</td>
+                  <td>{el.password}</td>
+
+                  <td>
+                    <NavLink to={`userupdate`}>
+                      <button
+                        style={{ marginRight: "5px" }}
+                        className="btn btn-success"
+                      >
+                        Update
+                      </button>
+                    </NavLink>
+
+                    <button
+                      onClick={() => handleDelete(el._id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
-
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Userlist;
