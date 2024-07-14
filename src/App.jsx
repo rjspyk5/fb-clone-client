@@ -14,7 +14,7 @@ import RightBar from "./components/rightBar/RightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import "./style.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 
@@ -32,11 +32,12 @@ function App() {
         <div style={{ display: "flex" }}>
           <LeftBar />
           <div
+            className="test"
             style={{
               flex: 6,
               paddingTop: "20px",
-
-              backgroundColor: "#F6F3F3",
+              paddingLeft: "20px",
+              backgroundColor: darkMode ? "#323232" : "#F1EEEE",
             }}
           >
             <Outlet />

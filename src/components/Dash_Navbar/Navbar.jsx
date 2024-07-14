@@ -1,11 +1,23 @@
 import "./Navbar.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { useAuth } from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const { logOut, user } = useAuth();
+  const handleLogout = () => {
+    logOut().then(() => navigate("/login"));
+  };
+  useEffect(() => {
+    !user && logOut();
+  }, [handleLogout]);
+
+  const navigate = useNavigate();
+
   return (
     <div
       className=" navbar"
@@ -38,11 +50,7 @@ const Navbar = () => {
           </a>
 
           <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#">
-                Log out
-              </a>
-            </li>
+            <li onClick={handleLogout}>Log out</li>
           </ul>
         </div>
       </div>

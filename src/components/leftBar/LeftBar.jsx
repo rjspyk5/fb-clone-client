@@ -19,7 +19,7 @@ const LeftBar = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div style={{ backgroundColor: "#F0F2F5" }} className="leftBar">
+    <div className="leftBar">
       <div className="container">
         <div className="menu">
           <div className="user">

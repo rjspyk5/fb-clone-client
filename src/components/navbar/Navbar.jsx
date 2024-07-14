@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="right">
-        <PersonOutlinedIcon />
+        {/* <PersonOutlinedIcon /> */}
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon />
         <div className="user">

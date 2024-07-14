@@ -5,7 +5,7 @@ import "./home.scss";
 
 const Home = () => {
   return (
-    <div style={{ backgroundColor: "#F0F2F5" }}>
+    <div>
       <Stories />
       <Share />
       <Posts />
