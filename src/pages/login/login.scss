@@ -1,92 +1,92 @@
-*{
-    margin: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
 .login {
-    height: 100vh;
-    background-color: rgb(193, 190, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    .card {
-      width: 50%;
+  background-color: rgb(193, 190, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    width: 50%;
+    display: grid;
+ 
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .left, .right {
+      flex: 1;
       display: flex;
-      background-color: white;
-      border-radius: 10px;
-      min-height: 600px;
-      overflow: hidden;
-  
-      .left {
-        flex: 1;
-        background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-          url("https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&w=600")
-            center;
-        background-size: cover;
-        padding: 50px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .left {
+      background: linear-gradient(
+          rgba(39, 11, 96, 0.5),
+          rgba(39, 11, 96, 0.5)
+        ),
+        url("https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&w=600")
+          center;
+      background-size: cover;
+      color: white;
+      gap: 30px;
+
+      h1 {
+        font-size: 50px; /* Adjust font-size for better fit */
+        line-height: 1.2;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      button {
+        width: 50%;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      gap: 50px;
+
+      h1 {
+        color: #555;
+      }
+
+      form {
         display: flex;
         flex-direction: column;
         gap: 30px;
-        color: white;
-  
-        h1 {
-          font-size: 100px;
-          line-height: 100px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 20px 10px;
         }
-        
-        p {
-        }
-  
-        span {
-          font-size: 14px;
-        }
-        
+
         button {
           width: 50%;
           padding: 10px;
           border: none;
-          background-color: white;
-          color: rebeccapurple;
+          background-color: #938eef;
+          color: white;
           font-weight: bold;
           cursor: pointer;
         }
       }
-  
-      .right {
-        flex: 1;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-        justify-content: center;
-  
-        h1 {
-        color: #555;
-        }
-        
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-          
-          input {
-          border: none;
-          border-bottom: 1px solid lightgray;
-          padding: 20px 10px;
-          }
-          
-          button {
-            width: 50%;
-            padding: 10px;
-            border: none;
-            background-color: #938eef;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-          }
-        }
-      }
     }
   }
-  
+}
