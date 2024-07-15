@@ -34,11 +34,7 @@ const Profile = () => {
           alt=""
           className="cover"
         />
-        <img
-          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
-          alt=""
-          className="profilePic"
-        />
+        <img src={user?.photoURL} alt="" className="profilePic" />
       </div>
       <div className="profileContainer">
         <div className="uInfo">
@@ -60,7 +56,7 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>Jane Doe</span>
+            <span>{user.displayName}</span>
             <div className="info">
               <div className="item">
                 <PlaceIcon />

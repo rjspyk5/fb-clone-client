@@ -6,7 +6,7 @@ import "./home.scss";
 const Home = () => {
   return (
     <div>
-      <Stories />
+      {/* <Stories /> */}
       <Share />
       <Posts />
     </div>
